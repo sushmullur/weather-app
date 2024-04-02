@@ -31,3 +31,39 @@ body {
     text-wrap: balance;
   }
 }
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.5s ease-out forwards;
+}
+
+.input:focus {
+  animation: ring 0.3s ease-in-out forwards;
+}
+
+@keyframes ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(8, 145, 178, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.4);
+  }
+}
+
+.btn:hover {
+  filter: brightness(120%);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
