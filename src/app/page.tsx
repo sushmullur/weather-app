@@ -14,16 +14,18 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-300 to-blue-900 flex flex-col items-center justify-center text-gray-800 px-4 py-8">
-      <div className="animate-scaleUp p-8 max-w-4xl bg-white/90 backdrop-blur-lg rounded-xl border border-gray-300 shadow-2xl dark:bg-gray-800/90 dark:border-gray-700 space-y-6">
-        <h1 className="text-5xl font-extrabold text-center mb-4 text-gray-900 dark:text-white">
-          Get Your Degree <span>🌡️</span>
-        </h1>
-        <p className="text-xl mb-8 text-gray-800 dark:text-gray-200 text-center">
-          Discover the weather in your city. Enter a city name below and get the current weather conditions in an instant.
-        </p>
+    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200">
+      {/* Title at the very top */}
+      <header className="w-full py-5">
+        <h1 className="text-4xl font-bold text-center sm:text-left px-4">Get Your Degree 🌡️</h1>
+      </header>
+
+      {/* Centered content */}
+      <div className="flex flex-1 flex-col items-center justify-center px-4 py-8">
         <SearchForm onSubmit={handleCitySubmit} />
-        <WeatherDisplay weatherInfo={weatherInfo} />
+        <div className="animate-scaleUp mt-8 p-8 max-w-4xl w-full bg-white/90 backdrop-blur-lg rounded-xl border border-gray-300 shadow-2xl dark:bg-gray-800/90 dark:border-gray-700 space-y-6">
+          {weatherInfo ? <WeatherDisplay weatherInfo={weatherInfo} /> : <p>Weather info will be displayed here...</p>}
+        </div>
       </div>
     </div>
   );

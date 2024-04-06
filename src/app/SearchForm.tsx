@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 interface Props {
   onSubmit: (city: string) => void;
@@ -7,24 +7,28 @@ interface Props {
 const SearchForm: React.FC<Props> = ({ onSubmit }) => {
   const [city, setCity] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit(city);
-    setCity(''); // Reset after submit
+    setCity(''); // Optional: Clear the input after submission
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col items-center">
+
       <input
         type="text"
         value={city}
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter City Name"
-        className="input text-lg text-gray-900 placeholder-gray-500 border border-gray-300 focus:ring-4 focus:ring-cyan-500 rounded-lg"
+        className="w-full p-3 mt-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-300 ease-in-out"
+        style={{ transition: 'all 0.3s ease-in-out' }}
       />
+
       <button
         type="submit"
-        className="btn text-lg bg-gradient-to-r from-green-500 to-cyan-600 hover:bg-gradient-to-bl text-white font-bold py-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 active:scale-95">
+        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
         Submit
       </button>
     </form>
